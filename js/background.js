@@ -1,54 +1,67 @@
 const canvas = document.getElementById('canvas');
 const ctx = canvas?.getContext('2d');
 
-function getResponsiveSquareSize() {
-  const minDim = Math.min(window.innerWidth, window.innerHeight);
-  return Math.max(3, minDim / 120);
-}
+const circleCount = 100;
+const circles = [];
 
-let squareSize = getResponsiveSquareSize();
-const squareCount = 100;
-const squares = [];
+const minCircleSize = 2;
+const maxCircleSize = 6;
+
+function getResponsiveSpeed() {
+  const minDim = Math.min(window.innerWidth, window.innerHeight);
+  return Math.max(1, minDim / 500);
+}
 
 function resizeCanvas() {
   if (!canvas) return;
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
-  squareSize = getResponsiveSquareSize();
 }
 
 window.addEventListener('resize', resizeCanvas);
 resizeCanvas();
 
-for (let i = 0; i < squareCount; i++) {
-  squares.push({
+for (let i = 0; i < circleCount; i++) {
+  const size = minCircleSize + Math.random() * (maxCircleSize - minCircleSize);
+  circles.push({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
-    dx: (Math.random() - 0.5) * 8,
-    dy: (Math.random() - 0.5) * 8,
+    dx: (Math.random() - 0.5) * 4 * getResponsiveSpeed(),
+    dy: (Math.random() - 0.5) * 4 * getResponsiveSpeed(),
+    size: size,
+    originalSize: size,
   });
 }
 
-function getSquareColor() {
+function getCircleColor() {
   return getComputedStyle(document.body).getPropertyValue('--square-color').trim();
 }
 
 function animate() {
   if (!ctx || !canvas) return;
+  
   ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--bg-color');
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = getSquareColor();
+  ctx.fillStyle = getCircleColor();
 
-  for (const square of squares) {
-    square.x += square.dx;
-    square.y += square.dy;
+  for (const circle of circles) {
+    circle.x += circle.dx;
+    circle.y += circle.dy;
 
-    if (square.x < 0 || square.x + squareSize > canvas.width) square.dx *= -1;
-    if (square.y < 0 || square.y + squareSize > canvas.height) square.dy *= -1;
+    if (circle.x - circle.size < 0 || circle.x + circle.size > canvas.width) {
+      circle.dx *= -1;
+      circle.dy += (Math.random() - 0.5) * 0.5;
+    }
+    
+    if (circle.y - circle.size < 0 || circle.y + circle.size > canvas.height) {
+      circle.dy *= -1;
+      circle.dx += (Math.random() - 0.5) * 0.5;
+    }
 
-    ctx.fillRect(square.x, square.y, squareSize, squareSize);
+    ctx.beginPath();
+    ctx.arc(circle.x, circle.y, circle.size, 0, Math.PI * 2);
+    ctx.fill();
   }
 
   requestAnimationFrame(animate);

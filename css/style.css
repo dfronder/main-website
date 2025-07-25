@@ -3,15 +3,21 @@
  ***/
 
 @font-face {
-  font-family: 'JPFont';
-  src: url('../fonts/Nosutaru-dotMPlusH-10-Regular.ttf') format('truetype');
+  font-family: 'Figtree';
+  src: url('../fonts/FigtreeRoman.ttf') format('truetype');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RiiTegakiN-R';
+  src: url('../fonts/RiiTN_R.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: '5x5 font';
-  src: url('../fonts/5x5.ttf') format('truetype');
+  font-family: 'Gilroy';
+  src: url('../fonts/Gilroy-ExtraBold.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -79,7 +85,7 @@ canvas {
 }
 
 #centerText {
-  font-family: '5x5 font', sans-serif;
+  font-family: 'Gilroy', sans-serif;
   font-size: clamp(2rem, 8vw, 6rem);
   color: var(--font-color);
   line-height: 1.2;
@@ -104,13 +110,14 @@ canvas {
   }
 
   #centerText {
+    margin-top: 5px;
     font-size: clamp(1rem, 14vw, 2rem);
     line-height: 1.2;
     transform-origin: center;
   }
 
   #splashText {
-    font-family: 'JPFont', sans-serif;
+    font-family: 'RiiTegakiN-R', sans-serif;
     text-align: center;
     writing-mode: horizontal-tb;
     white-space: normal;
@@ -136,7 +143,7 @@ canvas {
 }
 
 #splashText {
-  font-family: 'JPFont', sans-serif;
+  font-family: 'RiiTegakiN-R', sans-serif;
   font-size: clamp(1rem, 3vw, 4vw);
   margin-top: 0.5rem;
   writing-mode: horizontal-tb;
@@ -150,8 +157,9 @@ canvas {
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
-  font-family: '5x5 font', sans-serif;
-  font-size: 1rem;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 700;
+  font-size: 0.8rem;
   color: #6B6B6B;
   opacity: 1;
   pointer-events: none;
@@ -171,7 +179,8 @@ canvas {
   box-sizing: border-box;
   z-index: 1100;
   overflow-y: auto;
-  font-family: '5x5 font', sans-serif;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 900;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -188,7 +197,7 @@ canvas {
 }
 
 #sideMenu li.top-item {
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
@@ -201,9 +210,9 @@ canvas {
   display: block;
   padding: 0.5rem 0.75rem;
   font-size: 1.125rem;
-  font-weight: 600;
   color: var(--menu-link-color);
-  font-family: '5x5 font', sans-serif;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 900;
   transition: color 0.3s ease;
   line-height: 1.2;
 }
@@ -214,7 +223,8 @@ canvas {
 
 #sideMenu .menu-subtext {
   font-size: 0.65rem;
-  font-family: '5x5 font', sans-serif;
+  font-family: 'Figtree', sans-serif;
+  font-weight: 900;
   opacity: 0.6;
   margin-top: 0.1rem;
   text-transform: uppercase;
@@ -224,7 +234,7 @@ canvas {
 #sideMenu a {
   text-decoration: none;
   color: var(--menu-link-color);
-  font-weight: 600;
+  font-weight: 900;
   font-size: 1.125rem;
   display: block;
   padding: 0.5rem 0.75rem;
@@ -315,7 +325,8 @@ canvas {
 
   #sideMenu a {
     font-size: 2rem;
-    font-family: '5x5 font', sans-serif;
+    font-family: 'Figtree', sans-serif;
+    font-weight: 900;
     color: var(--font-color);
     text-decoration: none;
     background: none;
@@ -331,6 +342,10 @@ body.about {
   position: relative;
 }
 
+h1 {
+  font-weight: 900;
+}
+
 #aboutContent {
   position: absolute;
   top: 5rem;
@@ -341,7 +356,7 @@ body.about {
   padding: 1.5rem;
   box-sizing: border-box;
   z-index: 1000;
-  font-family: '5x5 font', sans-serif;
+  font-family: 'Figtree', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
   color: var(--font-color);
@@ -399,7 +414,7 @@ body.about {
   height: 80%;
   fill: currentColor;
   opacity: 1;
-  transition: opacity 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .icon-button svg.fade-out {
