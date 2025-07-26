@@ -45,7 +45,7 @@ html, body {
 :root {
   --bg-color: #F8F8F8;
   --icon-color: #898989;
-  --square-color: #D4D4D4;
+  --circle-color: #EAEAEA;
   --icon-hover-color: #141414;
   --icon-mobile-color: #141414;
   --font-color: #141414;
@@ -56,7 +56,7 @@ html, body {
 body.dark {
   --bg-color: #141414;
   --icon-color: #898989;
-  --square-color: #1D1D1D;
+  --circle-color: #1D1D1D;
   --icon-hover-color: #F8F8F8;
   --icon-mobile-color: #F8F8F8;
   --font-color: #F8F8F8;
